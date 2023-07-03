@@ -3,7 +3,7 @@ let logger = require("morgan");
 let fs = require("fs");
 let app = express();
 let commentData = require("./data/comment.json")
-let fetch =require("node-fecth").default
+let fetch =require("node-fetch").default
 
 // app.use();  middware
 // app.use("enpoint", callback);  1 enpoint 1 callback
@@ -49,9 +49,9 @@ app.get("comment", (req, res) => {
    res.send(commentData)
 })
 
-app.get("/pokemon", (req,res)=> {
+app.get("/pokemon", async(req,res)=> {
    const dataPokemon = await(
-      await.fetch(" https://pokeapi.co/api/v2/pokemon/ditto")
+      await fetch(" https://pokeapi.co/api/v2/pokemon/ditto")
    ).json();
    res.send(dataPokemon)
 })
